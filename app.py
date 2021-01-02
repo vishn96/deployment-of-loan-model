@@ -38,7 +38,7 @@ class LoanForm(FlaskForm):
    Experience = TextField('Experience')
    Income = TextField('Income')
    CCAvg =TextField('CCAvg')
-   Mortgage = TextField('Age')
+   Mortgage = BooleanField('Mortgage? ')
    Securities_Account = BooleanField('Securities_Account? ')
    CD_Account = BooleanField('CD_Account? ')
    Online = BooleanField('Online? ')
