@@ -1,0 +1,15 @@
+<h1>Welcome to Customer Loan predictions</h1>
+<h2>Please enter your details below:</h2>
+<form  method="POST">
+    {# This hidden_tag is a CSRF security feature. #}
+    {{ form.hidden_tag() }}
+    {{ form.Age.label }} {{form.Age}}
+    <br>
+    {{ form.Experience.label}} {{form.Experience}}
+    <br>
+    {{form.Income.label}}{{form.Income}}
+    <br>
+    {{form.CCAvg.label}}{{form.CCAvg}}
+    <br>
+    {{ form.submit() }}
+</form>
