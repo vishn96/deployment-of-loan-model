@@ -38,6 +38,13 @@ class LoanForm(FlaskForm):
    Experience = TextField('Experience')
    Income = TextField('Income')
    CCAvg =TextField('CCAvg')
+   Mortgage = TextField('Age')
+   Securities_Account = BooleanField('Securities_Account? ')
+   CD_Account = BooleanField('CD_Account? ')
+   Online = BooleanField('Online? ')
+   CreditCard = BooleanField('CreditCard? ')
+   Family = RadioField('Family',choices=[('1','1 Family Member'), ('2','2 Family Members'),('3','3 Family Members'),('4+','4+ Family Members')])
+   Education = RadioField('Education', choices=[('1','Undergrad'), ('2','Graduate'),('3','Advanced/Professional')])
    submit = SubmitField('Analyze')
  
     
@@ -53,6 +60,13 @@ def index():
      session['Experience'] = form.Experience.data
      session['Income'] = form.Income.data
      session['CCAvg'] = form.CCAvg.data
+     session['Mortgage'] = form.Mortgage.data
+     session['Securities_Account'] = form.Securities_Account.data
+     session['CD_Account'] = form.CD_Account.data
+     session['Online'] = form.Online.data
+     session['CreditCard'] = form.CreditCard.data
+     session['Family'] = form.Family.data
+     session['Education'] = form.Education.data
      return redirect(url_for("prediction"))
  
   return render_template('home.html', form=form)
