@@ -8,15 +8,21 @@ from wtforms.validators import DataRequired,NumberRange
 import numpy as np 
 import joblib
 
-def return_prediction(model,scaler,sample_json):
+def return_prediction(model,sample_json):
  
    Age = sample_json['Age']
    Experience = sample_json['Experience']
    Income = sample_json['Income']
    CCAvg = sample_json['CCAvg']
+   Mortgage = sample_json['Mortgage']
+   Securities_Account = sample_json['Securities_Account']
+   CD_Account = sample_json['CD_Account']
+   Online = sample_json['Online']
+   CreditCard = sample_json['CreditCard']
+   Family = sample_json['Family']
+   Education =sample_json['Education']
     
-   loan = [[Age,Experience, Income, CCAvg]]
-   loan = scaler.transform(loan)
+   loan = [[Age,Experience, Income, CCAvg,Mortgage,Securities_Account,CD_Account,Online,CreditCard,Family,Education]]
    classes = np.array(['No loan', 'Loan'])
    class_ind = model.predict(loan)
  
@@ -30,20 +36,19 @@ app.config['SECRET_KEY'] = 'someRandomKey'
 
 # REMEMBER TO LOAD THE MODEL AND THE SCALER!
 loan_model = joblib.load("model.h5")
-loan_scaler = joblib.load("scaler.pkl")
 
 # Now create a WTForm Class
 class LoanForm(FlaskForm):
    Age = TextField('Age')
    Experience = TextField('Experience')
    Income = TextField('Income')
-   CCAvg =TextField('CCAvg')
-   Mortgage = BooleanField('Mortgage? ')
-   Securities_Account = BooleanField('Securities_Account? ')
-   CD_Account = BooleanField('CD_Account? ')
-   Online = BooleanField('Online? ')
-   CreditCard = BooleanField('CreditCard? ')
-   Family = RadioField('Family',choices=[('1','1 Family Member'), ('2','2 Family Members'),('3','3 Family Members'),('4+','4+ Family Members')])
+   CCAvg =TextField('How much is your average Credit Card Spending?')
+   Mortgage = BooleanField('Do you have a Mortgage? ')
+   Securities_Account = BooleanField('Do you have a  Securities Account? ')
+   CD_Account = BooleanField('Do you have a CD Account? ')
+   Online = BooleanField('Do you register for Online Banking? ')
+   CreditCard = BooleanField('Do you have a Credit Card? ')
+   Family = RadioField('How many members are there in your family?',choices=[('1','1 Family Member'), ('2','2 Family Members'),('3','3 Family Members'),('4+','4+ Family Members')])
    Education = RadioField('Education', choices=[('1','Undergrad'), ('2','Graduate'),('3','Advanced/Professional')])
    submit = SubmitField('Analyze')
  
@@ -80,7 +85,14 @@ def prediction():
    content['Experience'] = float(session['Experience'])
    content['Income'] = float(session['Income'])
    content['CCAvg'] = float(session['CCAvg']) 
-   results = return_prediction(model=loan_model,scaler=loan_scaler,sample_json=content)
+   content['Mortgage'] = float(session['Mortgage'])
+   content['Securities_Account'] = float(session['Securities_Account']) 
+   content['CD_Account'] = float(session['CD_Account']) 
+   content['Online'] = float(session['Online']) 
+   content['CreditCard'] = float(session['CreditCard']) 
+   content['Family'] = float(session['Family']) 
+   content['Education'] = float(session['Education']) 
+   results = return_prediction(model=loan_model,sample_json=content)
    return render_template('prediction.html',results=results)
 
 
