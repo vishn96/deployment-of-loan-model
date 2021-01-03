@@ -3,27 +3,38 @@
 <form  method="POST">
     {# This hidden_tag is a CSRF security feature. #}
     {{ form.hidden_tag() }}
-    {{ form.Age.label }} {{form.Age}}
+    {{ form.Age.label }}  {{form.Age}}
     <br>
-    {{ form.Experience.label}} {{form.Experience}}
     <br>
-    {{form.Income.label}}{{form.Income}}
+    {{ form.Experience.label}}  {{form.Experience}}
     <br>
-    {{form.CCAvg.label}}{{form.CCAvg}}
     <br>
-    {{form.Mortgage.label}}{{form.Mortgage}}
+    {{form.Income.label}}  {{form.Income}}
     <br>
-    {{form.Securities_Account.label}}{{form.Securities_Account}}
     <br>
-    {{form.CD_Account.label}}{{form.CD_Account}}
+    {{form.CCAvg.label}}  {{form.CCAvg}}
     <br>
-    {{form.Online.label}}{{form.Online}}
     <br>
-    {{form.CreditCard.label}}{{form.CreditCard}}
+    {{form.Mortgage.label}}  {{form.Mortgage}}
     <br>
-    {{form.Family.label}}{{form.Family()}}
     <br>
-    {{form.Education.label}}{{form.Education()}}
+    {{form.Securities_Account.label}}  {{form.Securities_Account}}
+    <br>
+    <br>
+    {{form.CD_Account.label}}  {{form.CD_Account}}
+    <br>
+    <br>
+    {{form.Online.label}}  {{form.Online}}
+    <br>
+    <br>
+    {{form.CreditCard.label}}  {{form.CreditCard}}
+    <br>
+    <br>
+    {{form.Family.label}}  {{form.Family()}}
+    <br>
+    <br>
+    {{form.Education.label}}  {{form.Education()}}
+    <br>
     <br>
     {{ form.submit() }}
 </form>
