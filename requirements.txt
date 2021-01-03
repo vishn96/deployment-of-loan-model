@@ -25,3 +25,4 @@ tf-estimator-nightly==1.14.0.dev2019030115
 Werkzeug==0.16.0
 wincertstore==0.2
 WTForms==2.2.1
+pandas==1.0.5
