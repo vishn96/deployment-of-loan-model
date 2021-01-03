@@ -5,7 +5,8 @@ import pickle
 from flask_wtf import FlaskForm
 from wtforms import IntegerField, BooleanField, FloatField, TextField,SubmitField, RadioField
 from wtforms.validators import DataRequired,NumberRange
-import numpy as np 
+import numpy as np
+import pandas as pd
 import joblib
 
 def return_prediction(model,sample_json):
