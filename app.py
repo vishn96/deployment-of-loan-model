@@ -49,7 +49,7 @@ class LoanForm(FlaskForm):
    CD_Account = BooleanField('Do you have a CD Account? ')
    Online = BooleanField('Did you register for Online Banking? ')
    CreditCard = BooleanField('Do you have a Credit Card? ')
-   Family = RadioField('How many members are there in your family?',choices=[('1','1 Family Member'), ('2','2 Family Members'),('3','3 Family Members'),('4+','4+ Family Members')])
+   Family = RadioField('How many members are there in your family?',choices=[('1','1 Family Member'), ('2','2 Family Members'),('3','3 Family Members'),('4','4+ Family Members')])
    Education = RadioField('Education', choices=[('1','Undergrad'), ('2','Graduate'),('3','Advanced/Professional')])
    submit = SubmitField('Analyze')
  
